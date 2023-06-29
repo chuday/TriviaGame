@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @StateObject var triviaManager = TrivialManager()
+    
     var body: some View {
         
         NavigationView {
@@ -24,13 +26,14 @@ struct ContentView: View {
                 
                 NavigationLink {
                     TrivialView()
+                        .environmentObject(triviaManager)
                 } label: {
                     PrimaryButton(text: "Let's go!")
                 }
             }
             .frame(maxWidth:  .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.all)
-        .background(Color(red: 0.984, green: 0.929, blue: 0.847))
+            .background(Color(red: 0.984, green: 0.929, blue: 0.847))
         }
     }
 }
